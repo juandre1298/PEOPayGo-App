@@ -16,3 +16,12 @@ export interface UpdateUserDto {
   password?: string;
   type?: 'admin' | 'customer';
 }
+
+export interface User {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  type: 'admin' | 'customer';
+}
