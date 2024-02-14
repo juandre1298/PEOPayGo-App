@@ -14,8 +14,8 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Hello API"', () => {
-      expect(service.getData()).toEqual({message: 'Hello API'});
+    it('should return "PEOPay API running!"', () => {
+      expect(service.getData()).toEqual({ message: 'PEOPay API running!' });
     });
   });
 });

@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 const users = [
   {
-    id: 5,
-    email: 'juandre1298@gmail.com',
-    first_name: 'juan',
-    last_name: 'salas',
+    id: 1,
+    email: 'test1@test1.com',
+    first_name: 'test1',
+    last_name: 'test1',
     password: '123456',
     type: 'admin',
   },
@@ -34,6 +34,14 @@ const users = [
     last_name: 'account',
     password: '123456',
     type: 'customer',
+  },
+  {
+    id: 5,
+    email: 'juandre1298@gmail.com',
+    first_name: 'juan',
+    last_name: 'salas',
+    password: '123456',
+    type: 'admin',
   },
 ];
 

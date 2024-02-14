@@ -14,9 +14,11 @@ describe('AppController', () => {
   });
 
   describe('getData', () => {
-    it('should return "Hello API"', () => {
+    it('should return "PEOPay API running!"', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({message: 'Hello API'});
+      expect(appController.getData()).toEqual({
+        message: 'PEOPay API running!',
+      });
     });
   });
 });
