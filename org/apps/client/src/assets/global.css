@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  /* border: 1px red dashed; */
+}
 @layer utilities {
   .btn_dark_blue {
     @apply bg-[#2A3553] px-6 py-2 text-white transition-all hover:bg-black;

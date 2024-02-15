@@ -1,6 +1,5 @@
-import './global.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import '../assets/global.css';
+import Navbar from '../components/Navbar';
 
 export const metadata = {
   title: 'Welcome to client',
@@ -14,10 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="abolsute">
         <Navbar />
         <main className="relative overflow-hidden">{children}</main>
-        <Footer />
       </body>
     </html>
   );

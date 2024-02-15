@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { navbarOptions } from '../constants/index';
+import { navbarOptions } from '../app/constants/index';
 import Button from './Button';
 import { FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -12,7 +12,7 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <nav className=" px-4 flex items-center justify-between max-container padding-container relative z-30 py-5">
+    <nav className=" px-4 flex items-center justify-between max-container padding-container fixed z-30 py-5 w-full">
       <Link href="/">
         <Image src="/logo-2.png" alt="logo" width={200} height={74} />
       </Link>
