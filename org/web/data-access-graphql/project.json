@@ -1,0 +1,19 @@
+{
+  "name": "web-data-access-graphql",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "web/data-access-graphql/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/web/data-access-graphql",
+        "main": "web/data-access-graphql/src/index.ts",
+        "tsConfig": "web/data-access-graphql/tsconfig.lib.json",
+        "assets": ["web/data-access-graphql/*.md"]
+      }
+    }
+  },
+  "tags": ["scope:web"]
+}

@@ -14,7 +14,7 @@ const Button = ({ type, title, icon: Icon, variant, onClick }: ButtonProps) => {
       className={`flex items-center gap-3 rounded-full border ${variant}`}
       onClick={onClick}
     >
-      <label className="bold-16 whitespace-nowrap">{title}</label>
+      <label className="bold-16 whitespace-nowrap hover">{title}</label>
       <Icon />
     </button>
   );

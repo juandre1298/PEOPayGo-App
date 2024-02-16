@@ -1,5 +1,6 @@
 import '../assets/global.css';
 import Navbar from '../components/Navbar';
+import { GlobalContextProvider } from '../context/store';
 
 export const metadata = {
   title: 'Welcome to client',
@@ -14,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="abolsute">
-        <Navbar />
-        <main className="relative overflow-hidden">{children}</main>
+        <GlobalContextProvider>
+          <Navbar />
+          <main className="relative overflow-hidden">{children}</main>
+        </GlobalContextProvider>
       </body>
     </html>
   );

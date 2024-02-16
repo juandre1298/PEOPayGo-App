@@ -39,6 +39,25 @@ export class UsersService {
     }
   }
 
+  async getUserByEmail(email: string, ctx?: Context) {
+    try {
+      const user = ctx
+        ? await ctx.prisma.user.findUnique({
+            where: { email },
+          })
+        : await prisma.user.findUnique({
+            where: { email },
+          });
+      if (!user) {
+        throw new NotFoundException('User not found');
+      }
+      return user;
+    } catch (error) {
+      console.log(error.message);
+      throw error; //
+    }
+  }
+
   async createUser(data: CreateUserDto, ctx?: Context) {
     try {
       const createdUser = ctx

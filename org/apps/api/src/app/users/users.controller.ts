@@ -9,20 +9,25 @@ import {
   NotFoundException,
   HttpStatus,
   HttpException,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto, UpdateUserDto } from './users.dto';
+
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   async findAll() {
     return await this.usersService.getUsers();
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   async findOne(@Param('id') id: string) {
     const user = await this.usersService.getUserById(parseInt(id, 10));
     if (!user) {
@@ -32,6 +37,7 @@ export class UsersController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   async create(@Body() createUserDto: CreateUserDto) {
     if (
       !createUserDto.email ||
@@ -60,6 +66,7 @@ export class UsersController {
   }
 
   @Put(':id')
+  @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     const updatedUser = await this.usersService.updateUser(
       parseInt(id, 10),
@@ -72,6 +79,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   async remove(@Param('id') id: string) {
     const deletedUser = await this.usersService.deleteUser(parseInt(id, 10));
     if (!deletedUser) {

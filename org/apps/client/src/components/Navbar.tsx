@@ -7,9 +7,50 @@ import { navbarOptions } from '../app/constants/index';
 import Button from './Button';
 import { FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { getSession } from '../utils/clientSiteUtils';
+import { useEffect, useState } from 'react';
+
+import { logout } from '../service/userService';
+import { useGlobalContext } from '../context/store';
 
 const Navbar = () => {
+  const { session, setSession } = useGlobalContext();
   const router = useRouter();
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (!session) {
+      const getSessionHandler = async () => {
+        const sessionData = await getSession();
+
+        if (sessionData !== null) {
+          setIsLogged(true);
+          setSession(sessionData);
+        } else {
+          setIsLogged(false);
+          router.push('/login');
+        }
+      };
+      getSessionHandler();
+    }
+  }, [session, router]);
+
+  useEffect(() => {
+    if (session) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  }, [session, setSession, router]);
+
+  const sessionHandler = () => {
+    if (isLogged) {
+      logout();
+      setSession(null);
+      setIsLogged(false);
+      router.push('/login');
+    }
+  };
 
   return (
     <nav className=" px-4 flex items-center justify-between max-container padding-container fixed z-30 py-5 w-full">
@@ -29,12 +70,10 @@ const Navbar = () => {
         <div className=" md:flex hidden">
           <Button
             type="button"
-            title="Login"
+            title={isLogged ? 'Log out' : 'Log in'}
             icon={FaUser}
             variant="btn_dark_blue"
-            onClick={() => {
-              router.push('/login');
-            }}
+            onClick={sessionHandler}
           />
         </div>
       </ul>
