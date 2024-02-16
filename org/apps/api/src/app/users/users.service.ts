@@ -16,7 +16,7 @@ export class UsersService {
       }
     } catch (error) {
       console.log(error.message);
-      throw error; //
+      throw error;
     }
   }
 
@@ -28,6 +28,25 @@ export class UsersService {
           })
         : await prisma.user.findUnique({
             where: { id },
+          });
+      if (!user) {
+        throw new NotFoundException('User not found');
+      }
+      return user;
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+
+  async getUserByEmail(email: string, ctx?: Context) {
+    try {
+      const user = ctx
+        ? await ctx.prisma.user.findUnique({
+            where: { email },
+          })
+        : await prisma.user.findUnique({
+            where: { email },
           });
       if (!user) {
         throw new NotFoundException('User not found');

@@ -8,15 +8,38 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
+  id         Int         @id @default(autoincrement())
+  email      String      @unique
   first_name String
   last_name  String
   password   String
   type       UserType
+  datasheets datasheet[]
 }
 
 enum UserType {
   admin
   customer
+}
+
+model datasheet {
+  id             Int       @id @default(autoincrement())
+  employeeName   String
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+  payType        String
+  hours          String?
+  weeksReporting String?
+  startDate      DateTime
+  finalDate      DateTime
+  note           String?
+  grossWage      Float
+  payRate        PayRate
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+enum PayRate {
+  hourly
+  salary
 }

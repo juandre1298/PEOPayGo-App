@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/users": ["users/src/index.ts"]
+      "@org/models": ["models/src/index.ts"],
+      "@org/users": ["users/src/index.ts"],
+      "@org/web/data-access-graphql": ["web/data-access-graphql/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

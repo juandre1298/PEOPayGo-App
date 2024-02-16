@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-
+import { hashPassword } from '../apps/api/src/app/utils/utils';
 const prisma = new PrismaClient();
 
 const users = [
@@ -44,9 +44,12 @@ const users = [
     type: 'admin',
   },
 ];
-
 async function main() {
   for (let user of users) {
+    // Hash the password
+    const hashedPassword = hashPassword(user.password);
+    // Replace plain password with hashed password
+    user.password = hashedPassword;
     await prisma.user.create({ data: user });
   }
 }
