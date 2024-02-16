@@ -77,9 +77,15 @@ export interface FormData {
 }
 
 export interface Datasheets {
-  fullName: string;
+  id: number;
+  employeeName: string;
+  userId: number;
   payType: string;
-  payRate: PayRate;
   hours: string;
-  grossWages: string;
+  weeksReporting: string;
+  startDate: string;
+  finalDate: string;
+  note: string;
+  grossWage: number;
+  payRate: PayRate;
 }

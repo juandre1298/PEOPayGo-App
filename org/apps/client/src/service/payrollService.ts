@@ -45,13 +45,13 @@ export async function getFullDatasheet(): Promise<Datasheets[]> {
   try {
     const accessToken = await getCookieByName('accessToken'); // Get access token from cookie
 
-    const response = await axios.get<Datasheets[]>(`${apiUrl}/datasheets`, {
+    const response = await axios.get<Datasheets[]>(`${apiUrl}/timesheet`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
     return response.data;
   } catch (error) {
-    throw new Error('Failed to fetch users');
+    throw new Error('Failed to fetch timesheets');
   }
 }

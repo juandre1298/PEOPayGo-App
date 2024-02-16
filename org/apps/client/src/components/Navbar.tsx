@@ -53,7 +53,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" px-4 flex items-center justify-between max-container padding-container fixed z-30 py-5 w-full">
+    <nav className=" bg-white px-4 flex items-center justify-between max-container padding-container fixed z-30 py-5 w-full">
       <Link href="/">
         <Image src="/logo-2.png" alt="logo" width={200} height={74} />
       </Link>
