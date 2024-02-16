@@ -14,16 +14,6 @@ export function getPreviousDay(
   dateStr: string,
   startOfWeek: 'monday' | 'sunday' = 'monday'
 ): string {
-  const daysOfWeek: string[] = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-  ];
-
   // Convert input date string to Date object
   const date: Date = new Date(dateStr);
 
@@ -34,6 +24,14 @@ export function getPreviousDay(
   } else {
     prevMonday.setDate(date.getDate() - (day - 1));
   }
-  console.log(dateStr, startOfWeek, prevMonday);
+
   return formatDate(prevMonday);
 }
+
+// console.log('create Date sheet:', data);
+// const startDate: Date = getPreviousMonday(data.startDate);
+// let finalDate: Date = new Date(data.finalDate);
+// if (data.finalDate === data.startDate) {
+//   finalDate.setDate(finalDate.getDate() + 1);
+// }
+// finalDate = getNextSunday(formatDate(finalDate));

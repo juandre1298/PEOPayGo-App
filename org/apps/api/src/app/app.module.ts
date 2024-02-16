@@ -9,6 +9,9 @@ import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { jwtSecret } from './auth/auth.module';
+import { PayrollController } from './payroll/payroll.controller';
+import { PayrollService } from './payroll/payroll.service';
+import { PayrollModule } from './payroll/payroll.module';
 
 @Module({
   imports: [
@@ -20,8 +23,9 @@ import { jwtSecret } from './auth/auth.module';
       secret: jwtSecret, // Replace with your actual secret key
       signOptions: { expiresIn: '1h' },
     }),
+    PayrollModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  controllers: [AppController, AuthController, PayrollController],
+  providers: [AppService, AuthService, PayrollService],
 })
 export class AppModule {}

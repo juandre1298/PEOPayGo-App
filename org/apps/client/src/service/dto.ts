@@ -75,3 +75,11 @@ export interface FormData {
   grossWage: number;
   payRate: PayRate;
 }
+
+export interface Datasheets {
+  fullName: string;
+  payType: string;
+  payRate: PayRate;
+  hours: string;
+  grossWages: string;
+}

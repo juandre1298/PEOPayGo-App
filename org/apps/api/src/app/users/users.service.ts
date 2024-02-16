@@ -16,7 +16,7 @@ export class UsersService {
       }
     } catch (error) {
       console.log(error.message);
-      throw error; //
+      throw error;
     }
   }
 
@@ -35,7 +35,7 @@ export class UsersService {
       return user;
     } catch (error) {
       console.log(error.message);
-      throw error; //
+      throw error;
     }
   }
 

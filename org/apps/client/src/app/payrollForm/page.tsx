@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FormData, PayRate } from '../../service/dto';
 import { useGlobalContext } from '../../context/store';
 import { formatDate, getPreviousDay } from '../../utils/generalUtils';
+import { sendPayrollReport } from '../../service/payrollService';
 
 const PayrollForm = () => {
   const { session } = useGlobalContext();
@@ -34,6 +35,8 @@ const PayrollForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    sendPayrollReport(formData);
   };
 
   const handleChange = (
